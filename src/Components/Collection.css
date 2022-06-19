@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+.SaraColl{
+    background-color: #d5ac1e !important;
+    font-family: Montserrat ;
+}
+
+
+h1{
+    font-weight: 700 ;
+}
+p{
+    font-weight: 500;
+    font-size: 18px;
+}
