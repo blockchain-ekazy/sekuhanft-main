@@ -2,22 +2,16 @@ import React, { useState, useEffect } from "react";
 import abi from "./abi.json";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
-import { Children } from "react/cjs/react.production.min";
-require("dotenv").config();
 
-const REACT_APP_CONTRACT_ADDRESS = "0x87b0988142D8621CbB059807F77f8FC73C73dF78";
-const SELECTEDNETWORK = "4";
+const REACT_APP_CONTRACT_ADDRESS = "0x38e6E1F014cb08e1A01d4C448804061578dF5D9a";
+const SELECTEDNETWORK = "1";
 const SELECTEDNETWORKNAME = "Ethereum Mainnet";
 const nftquantity = 500;
 
 function Mintbtn() {
   const [errormsg, setErrorMsg] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [totalSupply, settotalSupply] = useState(0);
   const [walletConnected, setWalletConnected] = useState(0);
-  const [whitelistedUser, setWhitelistedUser] = useState(0);
-  const [userAddress, setUserAddress] = useState("");
-  const [maxallowed, setmaxallowed] = useState("0");
 
   useEffect(async () => {
     if (await detectEthereumProvider()) {
@@ -27,7 +21,6 @@ function Mintbtn() {
       if ((await web3.eth.net.getId()) == SELECTEDNETWORK) {
         const contractaddress = REACT_APP_CONTRACT_ADDRESS;
         const ct = new web3.eth.Contract(abi, contractaddress);
-        settotalSupply(await ct.methods.totalSupply().call());
 
         if (nftquantity - (await ct.methods.totalSupply().call()) == 0) {
           setErrorMsg("All NFTs minted, Sale has ended");
@@ -57,7 +50,7 @@ function Mintbtn() {
 
     function handleEthereum() {
       const { ethereum } = window;
-      if (ethereum && ethereum.isMetaMask) {
+      if (ethereum) {
         console.log("Ethereum successfully detected!");
         // setProvider(true);
       } else {
@@ -100,7 +93,6 @@ function Mintbtn() {
           setErrorMsg("Already Minted Max");
         }
 
-        settotalSupply(await ct.methods.totalSupply().call());
         setQuantity(1);
       } else {
         setErrorMsg(
@@ -146,37 +138,13 @@ function Mintbtn() {
             metaMaskAccount.length
           );
 
-          
-
-
-        setUserAddress(metaMaskAccount);
-
-        // check status
-        // if 1 check for whitelist
-        // if 2 allow mint
-        // if 0 error
         const Status = await ct.methods.getStatus().call();
-        // const whitelist = await ct.methods.isWhitelisted(WAddress).call();
-
-        // console.log(whitelist);
         if (Status == 0) {
           setErrorMsg("Sale Not started");
         } else if (Status == 1) {
-          console.log(setUserAddress);
-          // if (whitelist) {
-          //   setWalletConnected(1);
-          //   // console.log("okok")
-          // } 
-          // else {
-          //   setErrorMsg("You Are Not Whitelisted");
-          // }
         } else if (Status == 2) {
-          //  <Mintbtn/>
           setWalletConnected(1);
         }
-
-        let maxa = await ct.methods.MAX_PER_Address().call();
-        setmaxallowed(maxa);
       }
     }
   }
@@ -186,6 +154,27 @@ function Mintbtn() {
       {/* <h6 className="text-center">{userAddress}</h6> */}
       {!errormsg ? (
         <div className="row align-items-center">
+           <div className="col-sm-12 my-3">
+                <div className="d-flex justify-content-center align-items-center">
+                  <button
+                    className="count btn mx-4 "
+                    onClick={() => setQuantity(quantity - 1)}
+                    disabled={quantity == 1}
+                  >
+                    {" "}
+                    -{" "}
+                  </button>
+                  <span className="quantity text-dark"> {quantity} </span>
+                  <button
+                    className="count btn mx-3 "
+                    onClick={() => setQuantity(quantity + 1)}
+                    // disabled={quantity == maxallowed}
+                  >
+                    {" "}
+                    +{" "}
+                  </button>
+                </div>
+              </div>
           {walletConnected == 0 ? (
             <div className="col-12">
               <h4
@@ -231,7 +220,7 @@ function Mintbtn() {
                     +{" "}
                   </button>
                 </div> */}
-                  {/* <span className="quantity text-dark"> 1 </span> */}
+                {/* <span className="quantity text-dark"> 1 </span> */}
               </div>
               {/* <div className="col-sm-12 pt-3 pt-sm-0">
                 <h4

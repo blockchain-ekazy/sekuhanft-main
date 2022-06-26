@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://cashcrabs.io",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",

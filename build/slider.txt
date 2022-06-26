@@ -1,0 +1,178 @@
+ <script>
+      $(document).ready(function () {
+        $(".home_meet_team_slider").slick({
+          transitionDuration: 110,
+          autoplay: true,
+          // dots: false,
+          // arrows:true,
+          infinite: true,
+          // centerMode: true,
+          // centerPadding: '0px',
+          delay: 1,
+          speed: 500,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+
+          responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 2,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        }
+      ]
+
+
+          
+        }
+        
+        );
+        
+      });
+    </script>
+
+
+
+
+
+---------------------------------Html---------------------------
+
+
+ <div className="home_meet_team_slider py-5">
+          <div
+            className="home_meet_team_inner slick-slide slick-active"
+            tabIndex="-1"
+            role="option"
+            aria-describedby="slick-slide01"
+            style={{ width: 282 }}
+            data-slick-index="1"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={FImg1} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>Visionary</h3> */}
+              {/* <h4>CO-FOUNDER</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="0"
+            role="option"
+            aria-describedby="slick-slide02"
+            style={{ width: 282 }}
+            data-slick-index="2"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={WImg1} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>Jelena</h3> */}
+              {/* <h4>BLOCKCHAIN EXPERT</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="2"
+            role="option"
+            aria-describedby="slick-slide03"
+            style={{ width: 282 }}
+            data-slick-index="3"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={AImg1} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>Dreamer</h3> */}
+              {/* <h4>DESIGNER</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="3"
+            role="option"
+            aria-describedby="slick-slide04"
+            style={{ width: 282 }}
+            data-slick-index="4"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={EImg1} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>Collab</h3> */}
+              {/* <h4>DESIGNER</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="4"
+            role="option"
+            aria-describedby="slick-slide05"
+            style={{ width: 282 }}
+            data-slick-index="5"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={FImg2} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>sabirpro</h3> */}
+              {/* <h4>Developer</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="4"
+            role="option"
+            aria-describedby="slick-slide05"
+            style={{ width: 282 }}
+            data-slick-index="5"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={FImg2} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>sabirpro</h3> */}
+              {/* <h4>Developer</h4> */}
+            </div>
+          </div>
+          <div
+            className="home_meet_team_inner  slick-slide slick-active"
+            tabIndex="5"
+            role="option"
+            aria-describedby="slick-slide06"
+            style={{ width: 282 }}
+            data-slick-index="6"
+            aria-hidden="true"
+          >
+            <div className="home_meet_team_img">
+              <img src={WImg2} title="" alt="" width="100%" />
+            </div>
+            <div className="home_meet_team_text">
+              {/* <h3>Robyan</h3> */}
+              {/* <h4>CO-FOUNDER</h4> */}
+            </div>
+          </div>
+        </div>

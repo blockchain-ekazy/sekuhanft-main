@@ -6,7 +6,6 @@ import "./Home.css";
 // import $ from "jquery";
 
 import Logo from "./Imgs/Logo.PNG";
-import ImgA from "./Imgs/A.png";
 import ImgB from "./Imgs/B.png";
 import ImgC from "./Imgs/C.png";
 import ImgD from "./Imgs/D.png";
@@ -18,20 +17,11 @@ import ImgI from "./Imgs/I.png";
 
 import WImg1 from "./Imgs/WATER/1.png";
 import WImg2 from "./Imgs/WATER/2.png";
-import WImg3 from "./Imgs/WATER/3.png";
-import WImg4 from "./Imgs/WATER/6.png";
-
 import FImg1 from "./Imgs/FIRE/1.png";
 import FImg2 from "./Imgs/FIRE/2.png";
-import FImg3 from "./Imgs/FIRE/3.png";
 
 import EImg1 from "./Imgs/EARTH/1.png";
-import EImg2 from "./Imgs/EARTH/2.png";
-import EImg3 from "./Imgs/EARTH/3.png";
-
 import AImg1 from "./Imgs/AIR/1.png";
-import AImg2 from "./Imgs/AIR/2.png";
-import AImg3 from "./Imgs/AIR/3.png";
 
 import Video from "./Imgs/Video/VideoM.mp4";
 
@@ -156,17 +146,25 @@ export default function Home() {
                   <div className="text-center">
                     <button className="btn BtnCntHead ">
                       {" "}
-                      <a className="text-white" href="/mint">
+                      <a className="text-white" href="/ultrarare/mint">
                         Connect
                       </a>
                     </button>
                   </div>
                 </li>
                 <li className="py-2 m-0 mr-md-3">
-                  <i class="fa-brands fa-instagram p-2 ico"></i>
-                  <i class="fa-brands fa-twitter p-2 mx-2 icoT"></i>
-                  <i class="fa-brands fa-telegram p-2 icoD"></i>
-                  {/* <i class="fa-brands fa-telegram"></i> */}
+                  <a
+                    href="https://opensea.io/collection/the-legends-of-sekuya"
+                    target="_blank"
+                  >
+                    <img src="./opensea.svg" width="40" className="pb-2 pr-1" />
+                  </a>
+                  <a href="https://twitter.com/sekuyaofficial" target="_blank">
+                    <i class="fa-brands fa-twitter p-2 mx-2 icoT"></i>
+                  </a>
+                  <a href="https://t.me/sekuyaofficial" target="_blank">
+                    <i class="fa-brands fa-telegram p-2 icoD"></i>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -358,7 +356,7 @@ export default function Home() {
           {/* <MintBtn/> */}
           <button className="btn BtnCntHead ">
             {" "}
-            <a className="text-white" href="/mint">
+            <a className="text-white" href="/ultrarare/mint">
               Connect
             </a>
           </button>

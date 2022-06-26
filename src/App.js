@@ -8,7 +8,7 @@ function App() {
     <div>
       {/* <Home /> */}
 
-      <BrowserRouter>
+      <BrowserRouter basename="/ultrarare">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/mint" component={Collection} />

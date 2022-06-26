@@ -6,8 +6,8 @@ import detectEthereumProvider from "@metamask/detect-provider";
 import LoadingImg from "./Imgs/Loading.gif";
 require("dotenv").config();
 
-const REACT_APP_CONTRACT_ADDRESS = "0x87b0988142D8621CbB059807F77f8FC73C73dF78";
-const SELECTEDNETWORK = "4";
+const REACT_APP_CONTRACT_ADDRESS = "0x38e6E1F014cb08e1A01d4C448804061578dF5D9a";
+const SELECTEDNETWORK = "1";
 const SELECTEDNETWORKNAME = "Ethereum Mainnet";
 const nftquantity = 500;
 
@@ -19,7 +19,6 @@ function Mintbtn2() {
 
   useEffect(async () => {
     if (await detectEthereumProvider()) {
-      // setProvider(true);
       window.web3 = new Web3(window.ethereum);
       await window.ethereum.enable();
       const web3 = window.web3;
@@ -32,34 +31,39 @@ function Mintbtn2() {
 
         let b = await ct.methods.balanceOf(metaMaskAccount).call();
 
+        let t = await ct.methods.totalSupply().call();
+
+        console.log(t);
+        console.log(b);
+
         let ListMinted = [];
 
-        for (let i = 0; i < b; i++) {
-          let tokenId = await ct.methods
-            .tokenOfOwnerByIndex(metaMaskAccount, i)
-            .call();
-          ListMinted.push(
-            <div className="col-md-3">
-              <a
-                href={
-                  "https://testnets.opensea.io/assets/0x87b0988142D8621CbB059807F77f8FC73C73dF78/" +
-                  tokenId
-                }
-                target="_blank"
-              >
-                <img
-                  className="w-100 "
-                  src={"./collection/" + tokenId + ".png"}
-                />
-              </a>
-            </div>
-          );
+        for (let i = 1; i <= t && ListMinted.length <= b; i++) {
+          if ((await ct.methods.ownerOf(i).call()) == metaMaskAccount)
+            ListMinted.push(
+              <div className="col-md-3">
+                <a
+                  href={
+                    "https://opensea.io/assets/ethereum/0x38e6e1f014cb08e1a01d4c448804061578df5d9a/" +
+                    i
+                  }
+                  target="_blank"
+                >
+                  <img
+                    className="w-100 "
+                    src={
+                      "https://nft.sekuya.io/ultrarare/collection/" + i + ".png"
+                    }
+                  />
+                </a>
+              </div>
+            );
         }
-        setItems(ListMinted);
-        if (b == 0)
+        if (ListMinted.length == 0)
           setItems(
             <h4 className="text-center col-12 text-white">Collection Empty</h4>
           );
+        else setItems(ListMinted);
 
         if (nftquantity - (await ct.methods.totalSupply().call()) == 0) {
           setErrorMsg("All NFTs minted, Sale has ended");
@@ -89,7 +93,7 @@ function Mintbtn2() {
 
     function handleEthereum() {
       const { ethereum } = window;
-      if (ethereum && ethereum.isMetaMask) {
+      if (ethereum) {
         console.log("Ethereum successfully detected!");
         // setProvider(true);
       } else {
@@ -109,7 +113,6 @@ function Mintbtn2() {
           <b>{errormsg}</b>
         </h5>
       )}
-      
     </div>
   );
 }
